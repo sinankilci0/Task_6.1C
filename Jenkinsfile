@@ -33,19 +33,19 @@ pipeline {
             }
             post {
                 // Notifications or actions based on the outcome of the tests
-                failure {
-                    // Sending an email in case of failure
-                    emailext subject: 'Tests Failed',
-                              body: 'Testing stage failed. Check logs for details.',
-                              to: 'sinan.kilci@yandex.com',
-                              attachLog: true
-                }
                 success {
                     // Sending an email in case of success
-                    emailext subject: 'Tests Passed',
-                              body: 'All tests passed successfully.',
-                              to: 'sinan.kilci@yandex.com',
-                              attachLog: true
+                    mail to: 'sinan.kilci@yandex.com',
+                         subject: 'Tests Passed',
+                         body: 'All tests passed successfully.',
+                         attachLog: true
+                }
+                failure {
+                    // Sending an email in case of failure
+                    mail to: 'sinan.kilci@yandex.com',
+                         subject: 'Tests Failed',
+                         body: 'Testing stage failed. Check logs for details.',
+                         attachLog: true
                 }
             }
         }
