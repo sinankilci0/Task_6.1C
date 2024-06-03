@@ -35,13 +35,13 @@ pipeline {
                 // Notifications or actions based on the outcome of the tests
                 success {
                     // Sending an email in case of success
-                    mail to: 'sinan.kilci@yandex.com',
+                    mail to: 'sinankilcitest@gmail.com',
                          subject: 'Tests Passed',
                          body: 'All tests passed successfully.'
                 }
                 failure {
                     // Sending an email in case of failure
-                    mail to: 'sinan.kilci@yandex.com',
+                    mail to: 'sinankilcitest@gmail.com',
                          subject: 'Tests Failed',
                          body: 'Testing stage failed. Check logs for details.'
                 }
