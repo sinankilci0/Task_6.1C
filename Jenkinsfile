@@ -35,15 +35,17 @@ pipeline {
                 // Notifications or actions based on the outcome of the tests
                 success {
                     // Sending an email in case of success
-                    emailext body: 'All tests passed successfully.',
+                    emailext subject: 'Tests Passed',
+                             body: 'All tests passed successfully.',
                              to: 'sinankilcitest@gmail.com',
-                             subject: 'Tests Passed'
+                             attachLog: true
                 }
                 failure {
                     // Sending an email in case of failure
-                    emailext body: 'Testing stage failed. Check logs for details.',
+                    emailext subject: 'Tests Failed',
+                             body: 'Testing stage failed. Check logs for details.',
                              to: 'sinankilcitest@gmail.com',
-                             subject: 'Tests Failed'
+                             attachLog: true
                 }
             }
         }
@@ -63,6 +65,23 @@ pipeline {
                 echo "Starting security scan with OWASP ZAP"
                 // sh 'zap-cli --quick-scan http://localhost:8080'
                 echo "Security scan completed"
+            }
+            post {
+                // Notifications or actions based on the security scan stage
+                success {
+                    // Sending an email in case of success
+                    emailext subject: 'Tests Passed',
+                             body: 'All security scans are done successfully.',
+                             to: 'sinankilcitest@gmail.com',
+                             attachLog: true
+                }
+                failure {
+                    // Sending an email in case of failure
+                    emailext subject: 'Tests Failed',
+                             body: 'Security scan stage failed. Check logs for details.',
+                             to: 'sinankilcitest@gmail.com',
+                             attachLog: true
+                }
             }
         }
 
