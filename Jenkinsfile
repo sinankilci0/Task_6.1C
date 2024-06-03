@@ -37,14 +37,14 @@ pipeline {
                     // Sending an email in case of failure
                     emailext subject: 'Tests Failed',
                               body: 'Testing stage failed. Check logs for details.',
-                              to: 'sinankilci.test@gmail.com',
+                              to: 'sinan.kilci@yandex.com',
                               attachLog: true
                 }
                 success {
                     // Sending an email in case of success
                     emailext subject: 'Tests Passed',
                               body: 'All tests passed successfully.',
-                              to: 'sinankilci.test@gmail.com',
+                              to: 'sinan.kilci@yandex.com',
                               attachLog: true
                 }
             }
