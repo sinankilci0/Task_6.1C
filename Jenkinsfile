@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // Running unit and integration tests using Maven
                 echo "Running unit tests"
-                // sh 'mvn test'
+                sh 'mvn test'
                 echo "Unit tests completed"
             }
             post {
